@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostDetail</title>
+</head>
+<style>
+    body{
+        background: black;
+        color: white;
+        padding: 20px;
+    }
+    .about{
+        justify-content: space-between;
+        display: flex;
+    }
+    .content{
+        font-size:20px;
+    }
+    .href_post{
+        text-decoration: none;
+        color: white;
+        font-size: 50px;
+    }
+</style>
+<nav>
+    <a class="href_post" href="/posts">←</a>
+<body>
+
+    <div class="container">
+        <div class="text">
+            <h1 class="title">
+                {{post.title}}
+            </h1>
+            <p class="content">
+                {{post.content}}
+            </p>
+        </div>
+        <div class="about">
+            <h3 class="author">
+                {{post.author.name}}
+            </h3>
+            <h3 class="time">
+                {{post.created_at}}
+            </h3>
+        </div>
+    </div>
+
+</body>
+</html>

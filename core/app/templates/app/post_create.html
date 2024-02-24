@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        background: rgb(0, 0, 0);
+    }
+    .container{
+        background-color: rgb(87, 76, 76);
+        display: flex;
+        padding: 25px;
+        margin-top: 50px;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: solid white 2px;
+
+        color: white;
+        width: 500px;
+        height: 700px;
+        font-size: 20px;
+        -webkit-box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74);
+-moz-box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74);
+box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74)
+    }
+    input{
+        width: 300px;
+        border-radius: 30px;
+        height: 40px;
+        display: block;
+        padding-left: 30px;
+        margin-top: 10px;
+        margin-left: 18px;
+    }
+    textarea{
+        border-radius: 10px;
+        width: 350px;
+        padding: 10px;
+        height: 300px;
+    }
+    select{
+        width: 380px;
+        border-radius: 30px;
+        height: 40px;
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+    button{
+        width: 380px;
+        border-radius: 30px;
+        height: 40px;
+        display: block;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    button:hover{
+        background-color: rgb(106, 74, 32);
+        color: white;
+        transition: 0.5s;
+    }
+    .href_post{
+        text-decoration: none;
+        color: white;
+        font-size: 50px;
+    }
+</style>
+<a class="href_post" href="/posts">←</a>
+<body>
+    <div class="container">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            <input type="text" id="title" name="title" placeholder="Название статьи" value="{{ post.title }}"><br>
+    
+            <textarea id="content" placeholder="Текст" name="content">{{ post.content }}</textarea><br>
+    
+
+            <select id="category" name="category">
+            {% for category in categories %}
+                <option value="{{ category.pk }}" >{{ category.name }}</option>
+            {% endfor %}
+            </select><br>
+            <select id="author" name="author">
+            {% for author in authors %}
+                <option value="{{ author.pk }}" >{{ author.name }} {{ author.surname }}</option>
+            {% endfor %}
+            </select><br>
+            <button type="submit">Сохранить</button>
+        </form>  
+    </div>
+
+</body>
+</html>

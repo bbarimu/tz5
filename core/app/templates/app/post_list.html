@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL POSTS</title>
+</head>
+
+<style>
+nav{
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+}
+.href_post{
+    color: white;
+    text-decoration: none;
+}
+.categories{
+    height: 100px;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.categories_name{
+
+    color: white;
+    text-decoration: none;
+}
+body{
+    padding: 30px;
+    background-color: black;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1 колонка */
+    grid-gap: 10px;
+    margin-top: 50px;
+}
+.block{
+    
+    border: 2px solid white;
+    width: 400px;
+    height: 450px;
+    border-radius: 50px;
+    text-align: center;    
+    transition: 0.9s;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.block:hover{
+    scale: 0.98;
+    transition: 0.8s;
+    background-color: black;
+    box-shadow: 0px 0px 50px 0px rgba(255, 0, 0, 0.694); /* Горизонтальное смещение, вертикальное смещение, размытие и цвет тени */
+}
+.title_name{
+    color: white;
+}
+.content_name{
+    color: white;
+}
+.content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.author_name{
+
+    text-align: right;
+    text-align:end;
+}
+.aa{
+    text-decoration: none;
+    width: 20px;
+}
+.author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time,
+.author_name {
+    padding-top: 30px;
+    color: white;
+    margin: 0; /* Убираем отступы по умолчанию для абзацев */
+}
+
+.time {
+    margin-right: 10px; /* Добавляем отступ справа для разделения элементов */
+}
+
+.author_name {
+    margin-left: 10px; /* Добавляем отступ слева для разделения элементов */
+    padding-left: 10px; /* Опционально: добавляем внутренний отступ слева для лучшего визуального разделения */
+}
+
+</style>
+
+<nav>
+    <a class="href_post" href="/posts">Главная</a>
+    {%for category in categories%}
+    <div class="categories">
+        <a href="?category_name={{category.name}}" class="categories_name">{{ category.name }} </a>
+    </div>
+    {%endfor%}
+    <div class="create_author">
+        <a href="/author/create">Создать  Автора</a>
+    </div>
+    <div class="create_сategory">
+        <a href="/category/create">Создать  категорию</a>
+    </div>
+    <div class="create_post">
+        <a href="/posts/create">Создать  Пост</a>
+    </div>
+</nav>
+
+
+<body>
+    
+
+    <div class="container">
+        
+        {% for post in posts %}
+        <a class="aa" href="{{post.id}}">
+    
+            <div class="block">
+    
+                <div class="title">
+                        <p class="title_name">
+                            Название поста: {{post.title}}
+                        </p>
+                </div>
+                <div class="content">
+                    <p class="content_name">{{ post.content }}</p>
+                </div>
+                <div class="author">
+                    <p class="author_name">{{ post.author.name }}</p>
+                </div>
+            </div>
+    
+        </a>
+    
+    
+        {% endfor %}
+    
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(0, 0, 0);
+    }
+    .container{
+        background-color: rgb(87, 76, 76);
+        display: flex;
+        padding: 25px;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        border: solid white 2px;
+        text-align: center;
+        color: white;
+        width: 500px;
+        height: 400px;
+        font-size: 20px;
+        -webkit-box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74);
+-moz-box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74);
+box-shadow: inset -8px -13px 65px 4px rgba(0,0,0,0.74)
+    }
+    input{
+        width: 300px;
+        border-radius: 30px;
+        height: 40px;
+        display: block;
+        padding-left: 30px;
+        margin-top: 10px;
+    }
+    button{
+        width: 300px;
+        border-radius: 30px;
+        height: 40px;
+        display: block;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    button:hover{
+        background-color: rgb(106, 74, 32);
+        color: white;
+        transition: 0.5s;
+    }
+    .href_post{
+        text-decoration: none;
+        color: white;
+        font-size: 50px;
+    }
+</style>
+<a class="href_post" href="/posts">←</a>
+
+<body>
+    <div class="container">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            <input type="text" id="name" name="name" placeholder="Введите название категории:" value="{{ category.name }}">
+            <button type="submit">Сохранить</button>
+
+        </form>
+    </div>
+</body>
+</html>
